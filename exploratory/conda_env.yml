@@ -1,0 +1,23 @@
+name: exploratory
+channels:
+  - conda-forge
+dependencies:
+  - bzip2=1.0.8
+  - ca-certificates
+  - libffi=3.4.2
+  - libsqlite=3.39.3
+  - libzlib=1.2.12
+  - ncurses=6.3
+  - openssl=3.0.5
+  - python=3.8.13
+  - readline=8.1.2
+  - setuptools=65.3.0
+  - sqlite=3.39.3
+  - tk=8.6.12
+  - wheel=0.37.1
+  - xz=5.2.6
+  - pip
+  - pip:
+    - mlflow
+    - pandas==1.5.0
+    - mlflow==1.29.0
