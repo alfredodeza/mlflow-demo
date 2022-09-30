@@ -19,9 +19,12 @@ client = MlflowClient()
 client.create_registered_model("onnx-t5")
 ```
 
-You can fetch this model with
 
-```
+### Retrieving and updating models
+
+You can fetch this model at a specific version with:
+
+```python
 model_name = "onnx-t5"
 model_version = 1
 
@@ -29,4 +32,34 @@ model = mlflow.pyfunc.load_model(
     model_uri=f"models:/{model_name}/{model_version}"
 )
 
+```
+
+Update the model descriptions for a specific version:
+
+```python
+client.update_model_version(
+    name = "onnx-t5",
+    version = 1,
+    description = "This is the T5 model in an ONNX version 1.6 using Opset 12"
+)
+```
+
+### Changing stages
+
+Stages are used as a way to identify if a model is going for a staging environment or going into production. These _stages_ allow you to move models from one to the other and it also affects how to retrieve these models from the registry. There are three stages supported by MLflow:
+
+1. Staging
+1. Production
+1. Archived
+
+If no stage is specified, it is set to `None`.
+
+Change the stage of a model:
+
+```python
+client.transition_model_version_stage(
+    name="onnx-t5",
+    version=1,
+    stage="Production"
+)
 ```
