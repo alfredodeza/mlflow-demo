@@ -2,11 +2,11 @@ import sys
 import click
 import mlflow
 import pandas as pd
-
+mlflow.autolog()
 
 def carriage_returns(df):
     for index, row in df.iterrows():
-        for column, field in row.iteritems():
+        for column, field in row.items():
             try:
                 if "\r\n" in field:
                     return index, column, field
